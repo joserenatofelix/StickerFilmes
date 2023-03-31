@@ -13,7 +13,6 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // fazer uma conexão HTTP e buscar os top 250 filmes
-        //String url = "https://imdb-api.com/en/API/Top250Movies/k_0ojt0yvm";
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
@@ -25,15 +24,20 @@ public class App {
         var parser = new JsonParser();
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
-        // exibir e manipular os dados 
+        // exibir e manipular os dados
         var geradora = new GeradoraDeFigurinhas();
-        for (Map<String,String> filme : listaDeFilmes) {
 
-            String urlImagem = filme.get("image");
+        for (int i = 0; i < 10; i++) {
+
+            Map<String, String> filme = listaDeFilmes.get(i);
+
+            String urlImagem = filme.get("image")
+                    .replaceAll("(@+) (.*).jpg$", "$1.jpg");
+
             String titulo = filme.get("title");
 
             InputStream inputStream = new URL(urlImagem).openStream();
-            String nomeArquivo = titulo + ".png";
+            String nomeArquivo = "saida/" + titulo + ".png";
 
             geradora.cria(inputStream, nomeArquivo);
 

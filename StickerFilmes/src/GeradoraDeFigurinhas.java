@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
@@ -12,9 +13,11 @@ public class GeradoraDeFigurinhas {
     public void cria(InputStream inputStream, String nomeArquivo) throws Exception {
 
         // leitura da imagem
-        InputStream inputStream = new FileInputStream(new File("entrada/filme-maior.jpg"));
-        InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
-        .openStream();
+        // InputStream inputStream = 
+        //             new FileInputStream(new File("entrada/filme-maior.jpg"));
+        //InputStream inputStream = 
+        //              new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@.jpg")
+        //              .openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
         // cria nova imagem em memória com transparência e com tamanho novo
